@@ -1,25 +1,28 @@
 class Node:
-    next = None
-    data = None
+    # __init__ is the constructor function for python
+    def __init__(self, data):
+        self.next = None
+        self.data = data
 
 
 class SingleLinkedList:
     head = None
 
     def insert(self, obj):
-        node = Node()
-        node.data = obj
 
         if not self.head:
-            self.head = node
+            self.head = Node(obj)
         else:
-            self.last_node(self.head).next = node
+            self.last_node().next = Node(obj)
 
-    def last_node(self, check_node):
-        if not check_node.next:
-            return check_node
+    def last_node(self, node=None):
+        if not node:
+            node = self.head
+        if not node.next:
+            return node
         else:
-            return self.last_node(check_node.next)
+            return self.last_node(node.next)
+
 
 people = SingleLinkedList()
 people.insert('Bob')
