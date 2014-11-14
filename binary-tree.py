@@ -26,6 +26,14 @@ class BinaryTree:
                 node.right = Node(text)
             else:
                 self.set_next_node_position(text, node.right)
+    def print_tree(self, node=None):
+        if not node:
+            node = self.root
+        if node.left:
+            self.print_tree(node.left)
+        print(node.data)
+        if node.right:
+            self.print_tree(node.right)
 
 tree = BinaryTree()
 
@@ -34,4 +42,7 @@ tree.insert('c')
 tree.insert('b')
 tree.insert('e')
 tree.insert('h')
+
+tree.print_tree()
+
 pass
